@@ -11,6 +11,29 @@
 |
 */
 
+Route::get('api/person/{name}', function ($name = '') {
+    sleep(1);
+    return [
+        'val1' => 10,
+        'val2' => 20
+    ];
+});
+
+Route::get('api/facility/{facility}', function ($facility = '') {
+    sleep(2);
+    return [
+        'val3' => 30,
+        'val4' => 40
+    ];
+});
+
+Route::get('api/exposure/{exposure}', function ($exposure = '') {
+    sleep(1);
+    return [
+        'val5' => 50,
+    ];
+});
+
 Route::get('/{any}', function ($any = null) {
     return view('app');
 })->where('any', '.*');
