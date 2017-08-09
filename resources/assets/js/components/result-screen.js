@@ -43,14 +43,14 @@ class ResultScreen extends Component {
                     </div>
                 </section>
 
-                <a href="#" className="details-btn show" onClick={ this.handleDetailsClick }>
+                <a href="#" className="btn show" onClick={ this.handleDetailsClick }>
                     <i className="fa fa-caret-down"></i>
-                    <span>Show details</span>
+                    Show details
                 </a>
 
-                <a href="#" className="details-btn hide" onClick={ this.handleDetailsClick }>
+                <a href="#" className="btn hide" onClick={ this.handleDetailsClick }>
                     <i className="fa fa-caret-up"></i>
-                    <span>Hide details</span>
+                    Hide details
                 </a>
             </section>
         );

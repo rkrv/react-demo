@@ -37158,7 +37158,7 @@ var App = function (_Component) {
             return _react2.default.createElement(
                 'section',
                 { className: 'screen-container' },
-                _react2.default.createElement(_searchScreen2.default, { visible: !hasResult }),
+                _react2.default.createElement(_searchScreen2.default, { visible: !hasResult && !error }),
                 _react2.default.createElement(_loadingScreen2.default, { visible: busy }),
                 _react2.default.createElement(_resultScreen2.default, { visible: hasResult }),
                 _react2.default.createElement(_errorScreen2.default, { visible: error })
@@ -41745,9 +41745,20 @@ function ErrorScreen(props) {
     }
 
     return _react2.default.createElement(
-        'section',
-        null,
-        ':( Expect the unexpected. An error occured. Please reload the page to try again.'
+        "section",
+        { className: "screen error-screen" },
+        _react2.default.createElement(
+            "p",
+            { className: "sad-face" },
+            ":("
+        ),
+        _react2.default.createElement(
+            "p",
+            null,
+            "Expect the unexpected. An error occured. ",
+            _react2.default.createElement("br", null),
+            "Please reload the page and try again."
+        )
     );
 }
 
@@ -41868,23 +41879,15 @@ var ResultScreen = function (_Component) {
                 ),
                 _react2.default.createElement(
                     'a',
-                    { href: '#', className: 'details-btn show', onClick: this.handleDetailsClick },
+                    { href: '#', className: 'btn show', onClick: this.handleDetailsClick },
                     _react2.default.createElement('i', { className: 'fa fa-caret-down' }),
-                    _react2.default.createElement(
-                        'span',
-                        null,
-                        'Show details'
-                    )
+                    'Show details'
                 ),
                 _react2.default.createElement(
                     'a',
-                    { href: '#', className: 'details-btn hide', onClick: this.handleDetailsClick },
+                    { href: '#', className: 'btn hide', onClick: this.handleDetailsClick },
                     _react2.default.createElement('i', { className: 'fa fa-caret-up' }),
-                    _react2.default.createElement(
-                        'span',
-                        null,
-                        'Hide details'
-                    )
+                    'Hide details'
                 )
             );
         }

@@ -6,9 +6,12 @@ export default function ErrorScreen(props) {
     }
 
     return (
-        <section>
-            :(
-            Expect the unexpected. An error occured. Please reload the page to try again.
+        <section className="screen error-screen">
+            <p className="sad-face">:(</p>
+            <p>
+                Expect the unexpected. An error occured. <br/>
+                Please reload the page and try again.
+            </p>
         </section>
     );
 }

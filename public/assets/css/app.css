@@ -57,6 +57,20 @@ a span {
   border-bottom: 2px solid #E2E2E2;
 }
 
+.btn,
+.search-screen form button {
+  display: inline-block;
+  height: 1.875rem;
+  padding: 0 1rem;
+  margin: 0;
+  font-size: .6875rem;
+  text-align: center;
+  color: black;
+  outline: 0;
+  border: 2px solid black;
+  background: white;
+}
+
 .screen-container {
   position: relative;
   display: -webkit-box;
@@ -123,13 +137,6 @@ a span {
 .search-screen form button {
   display: block;
   width: 100%;
-  height: 1.875rem;
-  padding: 0;
-  margin: 0;
-  color: black;
-  outline: 0;
-  border: 2px solid black;
-  background: white;
 }
 
 .search-screen form button[disabled] {
@@ -185,9 +192,18 @@ a span {
   transition: all 0.25s ease-out;
 }
 
-.result-screen .details-btn {
+.result-screen .btn,
+.result-screen .search-screen form button,
+.search-screen form .result-screen button {
   display: none;
+  line-height: 1.625rem;
   margin-top: 0.5rem;
+}
+
+.result-screen .btn i,
+.result-screen .search-screen form button i,
+.search-screen form .result-screen button i {
+  margin-right: .625rem;
 }
 
 .result-screen .details {
@@ -234,8 +250,10 @@ a span {
   opacity: 0;
 }
 
-.result-screen.details-hidden .details-btn.show {
-  display: block;
+.result-screen.details-hidden .btn.show,
+.result-screen.details-hidden .search-screen form button.show,
+.search-screen form .result-screen.details-hidden button.show {
+  display: inline-block;
 }
 
 .result-screen.details-visible .details {
@@ -246,11 +264,22 @@ a span {
   opacity: 1;
 }
 
-.result-screen.details-visible .details-btn.hide {
-  display: block;
+.result-screen.details-visible .btn.hide,
+.result-screen.details-visible .search-screen form button.hide,
+.search-screen form .result-screen.details-visible button.hide {
+  display: inline-block;
 }
 
 .result-screen.details-visible .result {
   font-size: 1.5rem;
+}
+
+.error-screen {
+  font-family: "Fira Mono", monospace;
+  text-align: center;
+}
+
+.error-screen .sad-face {
+  font-size: 8rem;
 }
 

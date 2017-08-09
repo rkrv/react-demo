@@ -12,7 +12,7 @@ class App extends Component {
 
         return (
             <section className="screen-container">
-                <SearchScreen visible={ ! hasResult } />
+                <SearchScreen visible={ ! hasResult && ! error } />
                 <LoadingScreen visible={ busy } />
                 <ResultScreen visible={ hasResult } />
                 <ErrorScreen visible={ error } />
