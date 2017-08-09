@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import resultsReducer from './results-reducer';
+import resultReducer from './result-reducer';
+import appReducer from './app-reducer';
 
 export default combineReducers({
     form: formReducer,
-    results: resultsReducer
+    result: resultReducer,
+    app: appReducer
 });

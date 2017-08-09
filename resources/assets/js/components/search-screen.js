@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { BarLoader } from 'react-spinners';
 import { fetchResult } from '../actions';
 
 class SearchScreen extends Component {
@@ -10,7 +9,11 @@ class SearchScreen extends Component {
     }
 
     render() {
-        const { handleSubmit, pristine, invalid, submitting } = this.props;
+        const { visible, handleSubmit, pristine, invalid, submitting } = this.props;
+
+        if ( ! visible) {
+            return null;
+        }
 
         return (
             <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
@@ -21,8 +24,6 @@ class SearchScreen extends Component {
                 <button type="submit" disabled={ pristine || invalid || submitting }>
                     <i className="fa fa-search"></i> Search
                 </button>
-
-                <BarLoader color="black" height={ 2 } loading={ submitting } />
             </form>
         );
     }
