@@ -1,0 +1,65 @@
+.search-screen {
+    &.hidden {
+        display: none;
+    }
+
+    form {
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type=text] {
+            display: block;
+            width: 100%;
+            height: 1.875rem;
+            padding: 0 .3125rem;
+            margin: 0;
+
+            font-family: $font-family-fira-mono;
+            font-size: .75rem;
+
+            outline: 0;
+            border: 0;
+            border-top: 1px solid transparent;
+            border-bottom: 2px solid $color-inactive;
+
+            &:focus {
+                border-bottom-color: $color-active;
+            }
+
+            &.has-error {
+                border-bottom-color: $color-error;
+            }
+
+            &::placeholder {
+                color: $color-inactive;
+            }
+
+        } // End input[type=text]
+
+        button {
+            @extend .btn;
+
+            display: block;
+            width: 100%;
+
+            &[disabled] {
+                color: $color-inactive;
+                border-color: $color-inactive;
+            }
+
+        } // End button
+
+        .left {
+            width: 60%;
+        }
+
+        .right {
+            width: 25%;
+        }
+
+    } // End form
+
+} // End .search-screen
