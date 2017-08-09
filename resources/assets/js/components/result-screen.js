@@ -9,8 +9,7 @@ class ResultScreen extends Component {
             showDetails: false
         };
 
-        this.handleShowDetailsClick = this.handleShowDetailsClick.bind(this);
-        this.handleHideDetailsClick = this.handleHideDetailsClick.bind(this);
+        this.handleDetailsClick = this.handleDetailsClick.bind(this);
     }
 
     render() {
@@ -18,28 +17,41 @@ class ResultScreen extends Component {
             return null;
         }
 
+        const className = 'screen result-screen ' + (this.state.showDetails ? 'details-visible' : 'details-hidden');
+
         return (
-            <section>
-                The result is { this.calculateResult() } <br/>
-
-                <section>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Service Call</th>
-                                <th>Input</th>
-                                <th>Output</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            { this.renderDetails() }
-                        </tbody>
-                    </table>
+            <section className={ className }>
+                <section className="result-line">
+                    The result is <span className="result">{ this.calculateResult() }</span>
                 </section>
 
-                <a href="#" onClick={ this.handleShowDetailsClick }>Show me the details</a>
-                <a href="#" onClick={ this.handleHideDetailsClick }>Hide the details</a>
+                <section className="details">
+                    <div className="wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Service Call</th>
+                                    <th>Input</th>
+                                    <th>Output</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                { this.renderDetails() }
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <a href="#" className="details-btn show" onClick={ this.handleDetailsClick }>
+                    <i className="fa fa-caret-down"></i>
+                    <span>Show details</span>
+                </a>
+
+                <a href="#" className="details-btn hide" onClick={ this.handleDetailsClick }>
+                    <i className="fa fa-caret-up"></i>
+                    <span>Hide details</span>
+                </a>
             </section>
         );
     }
@@ -74,14 +86,9 @@ class ResultScreen extends Component {
         return result.val3 * result.val4;
     }
 
-    handleShowDetailsClick(e) {
+    handleDetailsClick(e) {
         e.preventDefault();
-        this.setState({ showDetails: true });
-    }
-
-    handleHideDetailsClick(e) {
-        e.preventDefault();
-        this.setState({ showDetails: false });
+        this.setState({ showDetails: ! this.state.showDetails });
     }
 }
 

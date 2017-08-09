@@ -37334,6 +37334,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function LoadingScreen(props) {
     var className = 'screen loading-screen ' + (props.visible ? 'visible' : 'hidden');
+
     return _react2.default.createElement(
         _reactDelayed2.default,
         { mounted: props.visible, unmountAfter: 2000 },
@@ -41799,8 +41800,7 @@ var ResultScreen = function (_Component) {
             showDetails: false
         };
 
-        _this.handleShowDetailsClick = _this.handleShowDetailsClick.bind(_this);
-        _this.handleHideDetailsClick = _this.handleHideDetailsClick.bind(_this);
+        _this.handleDetailsClick = _this.handleDetailsClick.bind(_this);
         return _this;
     }
 
@@ -41811,58 +41811,80 @@ var ResultScreen = function (_Component) {
                 return null;
             }
 
+            var className = 'screen result-screen ' + (this.state.showDetails ? 'details-visible' : 'details-hidden');
+
             return _react2.default.createElement(
                 'section',
-                null,
-                'The result is ',
-                this.calculateResult(),
-                ' ',
-                _react2.default.createElement('br', null),
+                { className: className },
                 _react2.default.createElement(
                     'section',
-                    null,
+                    { className: 'result-line' },
+                    'The result is ',
                     _react2.default.createElement(
-                        'table',
-                        null,
+                        'span',
+                        { className: 'result' },
+                        this.calculateResult()
+                    )
+                ),
+                _react2.default.createElement(
+                    'section',
+                    { className: 'details' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'wrapper' },
                         _react2.default.createElement(
-                            'thead',
+                            'table',
                             null,
                             _react2.default.createElement(
-                                'tr',
+                                'thead',
                                 null,
                                 _react2.default.createElement(
-                                    'th',
+                                    'tr',
                                     null,
-                                    'Service Call'
-                                ),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    'Input'
-                                ),
-                                _react2.default.createElement(
-                                    'th',
-                                    null,
-                                    'Output'
+                                    _react2.default.createElement(
+                                        'th',
+                                        null,
+                                        'Service Call'
+                                    ),
+                                    _react2.default.createElement(
+                                        'th',
+                                        null,
+                                        'Input'
+                                    ),
+                                    _react2.default.createElement(
+                                        'th',
+                                        null,
+                                        'Output'
+                                    )
                                 )
+                            ),
+                            _react2.default.createElement(
+                                'tbody',
+                                null,
+                                this.renderDetails()
                             )
-                        ),
-                        _react2.default.createElement(
-                            'tbody',
-                            null,
-                            this.renderDetails()
                         )
                     )
                 ),
                 _react2.default.createElement(
                     'a',
-                    { href: '#', onClick: this.handleShowDetailsClick },
-                    'Show me the details'
+                    { href: '#', className: 'details-btn show', onClick: this.handleDetailsClick },
+                    _react2.default.createElement('i', { className: 'fa fa-caret-down' }),
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        'Show details'
+                    )
                 ),
                 _react2.default.createElement(
                     'a',
-                    { href: '#', onClick: this.handleHideDetailsClick },
-                    'Hide the details'
+                    { href: '#', className: 'details-btn hide', onClick: this.handleDetailsClick },
+                    _react2.default.createElement('i', { className: 'fa fa-caret-up' }),
+                    _react2.default.createElement(
+                        'span',
+                        null,
+                        'Hide details'
+                    )
                 )
             );
         }
@@ -41915,16 +41937,10 @@ var ResultScreen = function (_Component) {
             return result.val3 * result.val4;
         }
     }, {
-        key: 'handleShowDetailsClick',
-        value: function handleShowDetailsClick(e) {
+        key: 'handleDetailsClick',
+        value: function handleDetailsClick(e) {
             e.preventDefault();
-            this.setState({ showDetails: true });
-        }
-    }, {
-        key: 'handleHideDetailsClick',
-        value: function handleHideDetailsClick(e) {
-            e.preventDefault();
-            this.setState({ showDetails: false });
+            this.setState({ showDetails: !this.state.showDetails });
         }
     }]);
 
