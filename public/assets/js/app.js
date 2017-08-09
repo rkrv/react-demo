@@ -14573,14 +14573,18 @@ function fetchResult(personsName) {
         return fetchPersonAjax(personsName).then(function (_ref) {
             var personsData = _ref.data;
 
-            return Promise.all([fetchFacilityAjax(personsData.val1), fetchExposureAjax(personsData.val2)]).then(function (_ref2) {
+            return Promise.all([fetchFacilityAjax(personsData.val1).then(function (response) {
+                return response.data;
+            }), fetchExposureAjax(personsData.val2).then(function (response) {
+                return response.data;
+            })]).then(function (_ref2) {
                 var _ref3 = _slicedToArray(_ref2, 2),
-                    facilityResponse = _ref3[0],
-                    exposureResponse = _ref3[1];
+                    facilityData = _ref3[0],
+                    exposureData = _ref3[1];
 
                 return dispatch({
                     type: ACTIONS.FETCH_RESULT,
-                    payload: _extends({}, personsData, facilityResponse.data, exposureResponse.data)
+                    payload: _extends({}, personsData, facilityData, exposureData)
                 });
             });
         });

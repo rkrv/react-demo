@@ -8,11 +8,11 @@ export function fetchResult(personsName) {
     return dispatch => {
         return fetchPersonAjax(personsName).then(({ data: personsData }) => {
             return Promise.all([
-                fetchFacilityAjax(personsData.val1),
-                fetchExposureAjax(personsData.val2)
-            ]).then(([ facilityResponse, exposureResponse ]) => dispatch({
+                fetchFacilityAjax(personsData.val1).then(response => response.data),
+                fetchExposureAjax(personsData.val2).then(response => response.data)
+            ]).then(([ facilityData, exposureData ]) => dispatch({
                 type: ACTIONS.FETCH_RESULT,
-                payload: { ...personsData, ...facilityResponse.data, ...exposureResponse.data }
+                payload: { ...personsData, ...facilityData, ...exposureData }
             }));
         });
     };
