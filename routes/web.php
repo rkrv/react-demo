@@ -20,7 +20,6 @@ Route::get('api/person/{name}', function ($name = '') {
 });
 
 Route::get('api/facility/{facility}', function ($facility = '') {
-    sleep(2);
     return [
         'val3' => 30,
         'val4' => 40
@@ -28,7 +27,6 @@ Route::get('api/facility/{facility}', function ($facility = '') {
 });
 
 Route::get('api/exposure/{exposure}', function ($exposure = '') {
-    sleep(1);
     return [
         'val5' => 50,
     ];

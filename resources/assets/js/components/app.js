@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BarLoader } from 'react-spinners';
 import { fetchResult } from '../actions';
 
-class SearchPage extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
     }
@@ -55,5 +55,5 @@ export default reduxForm({
     form: 'SearchForm',
     validate
 })(
-    connect(null, { fetchResult })(SearchPage)
+    connect(null, { fetchResult })(App)
 );

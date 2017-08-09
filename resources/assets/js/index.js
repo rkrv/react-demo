@@ -5,13 +5,13 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';
-import SearchPage from './components/search-page';
+import App from './components/app';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 ReactDom.render(
     <Provider store={ createStoreWithMiddleware(reducers) }>
-        <SearchPage />
+        <App />
     </Provider>,
     document.getElementById('root')
 );

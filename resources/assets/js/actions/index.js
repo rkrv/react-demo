@@ -2,20 +2,18 @@ import axios from 'axios';
 
 export const ACTIONS = {
     FETCH_RESULT: 'FETCH_RESULT',
-    FETCH_PERSON: 'FETCH_PERSON',
-    FETCH_FACILITY: 'FETCH_FACILITY',
-    FETCH_EXPOSURE: 'FETCH_EXPOSURE'
 };
 
 export function fetchResult(personsName) {
     return dispatch => {
-        return fetchPersonAjax(personsName).then(({ data }) => {
-            dispatch({ type: ACTIONS.FETCH_PERSON, payload: data });
-
+        return fetchPersonAjax(personsName).then(({ data: personsData }) => {
             return Promise.all([
-                fetchFacilityAjax(data.val1).then(({ data }) => dispatch({ type: ACTIONS.FETCH_FACILITY, payload: data })),
-                fetchExposureAjax(data.val2).then(({ data }) => dispatch({ type: ACTIONS.FETCH_EXPOSURE, payload: data }))
-            ]).then(() => dispatch({ type: ACTIONS.FETCH_RESULT }));
+                fetchFacilityAjax(personsData.val1),
+                fetchExposureAjax(personsData.val2)
+            ]).then(([ facilityResponse, exposureResponse ]) => dispatch({
+                type: ACTIONS.FETCH_RESULT,
+                payload: { ...personsData, ...facilityResponse.data, ...exposureResponse.data }
+            }));
         });
     };
 }
