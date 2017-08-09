@@ -16,15 +16,26 @@ class SearchScreen extends Component {
         }
 
         return (
-            <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
-                <label htmlFor="name">Enter a person's name to continue</label>
+            <section className="screen search-screen">
+                <form onSubmit={ handleSubmit(this.onSubmit.bind(this)) }>
+                    <label htmlFor="name">Enter a person's name to continue</label>
 
-                <Field name="name" id="name" component={ this.renderNameField } />
+                    <div>
+                        <div className="left">
+                            <Field name="name" id="name" component={ this.renderNameField } />
+                        </div>
 
-                <button type="submit" disabled={ pristine || invalid || submitting }>
-                    <i className="fa fa-search"></i> Search
-                </button>
-            </form>
+                        <div className="right">
+                            <button type="submit" disabled={ pristine || invalid || submitting }>
+                                <i className="fa fa-search"></i> Search
+                            </button>
+                        </div>
+
+                        <div className="clear"></div>
+                    </div>
+
+                </form>
+            </section>
         );
     }
 
@@ -33,7 +44,7 @@ class SearchScreen extends Component {
         const className = touched && error ? 'has-error' : '';
 
         return (
-            <input type="text" className={ className } { ...field.input } />
+            <input type="text" placeholder="Thomas" className={ className } { ...field.input } />
         );
     }
 

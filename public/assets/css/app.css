@@ -1,2 +1,152 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);@import url(https://fonts.googleapis.com/css?family=Fira+Mono|Roboto:400,700);.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.screen-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.screen {
+  width: 100%;
+  max-width: 385px;
+}
+
+.search-screen.hidden {
+  display: none;
+}
+
+.search-screen form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.search-screen form input[type=text] {
+  display: block;
+  width: 100%;
+  height: 1.875rem;
+  padding: 0 .3125rem;
+  margin: 0;
+  font-family: "Fira Mono", monospace;
+  font-size: .75rem;
+  outline: 0;
+  border: 0;
+  border-top: 1px solid transparent;
+  border-bottom: 2px solid #E2E2E2;
+}
+
+.search-screen form input[type=text]:focus {
+  border-bottom-color: black;
+}
+
+.search-screen form input[type=text].has-error {
+  border-bottom-color: #AA0000;
+}
+
+.search-screen form input[type=text]::-webkit-input-placeholder {
+  color: #E2E2E2;
+}
+
+.search-screen form input[type=text]:-ms-input-placeholder {
+  color: #E2E2E2;
+}
+
+.search-screen form input[type=text]::placeholder {
+  color: #E2E2E2;
+}
+
+.search-screen form button {
+  display: block;
+  width: 100%;
+  height: 1.875rem;
+  padding: 0;
+  margin: 0;
+  color: black;
+  outline: 0;
+  border: 2px solid black;
+  background: white;
+}
+
+.search-screen form button[disabled] {
+  color: #E2E2E2;
+  border-color: #E2E2E2;
+}
+
+.search-screen form .left {
+  width: 60%;
+}
+
+.search-screen form .right {
+  width: 25%;
+}
+
+.loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 100%;
+  background: white;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transition-delay: 1.5s;
+          transition-delay: 1.5s;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+}
+
+.loading-screen .spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  margin-left: -50px;
+  margin-top: -1px;
+}
 

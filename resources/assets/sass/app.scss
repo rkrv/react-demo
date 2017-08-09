@@ -1,1 +1,140 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono|Roboto:400,700');
+@import 'variables';
+@import 'helpers';
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-left: 10px;
+    margin-right: 10px;
+
+    font-family: $font-family-roboto;
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.screen-container {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen {
+    width: 100%;
+    max-width: 385px;
+}
+
+.search-screen {
+    &.hidden {
+        display: none;
+    }
+
+    form {
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input[type=text] {
+            display: block;
+            width: 100%;
+            height: 1.875rem;
+            padding: 0 .3125rem;
+            margin: 0;
+
+            font-family: $font-family-fira-mono;
+            font-size: .75rem;
+
+            outline: 0;
+            border: 0;
+            border-top: 1px solid transparent;
+            border-bottom: 2px solid $color-inactive;
+
+            &:focus {
+                border-bottom-color: $color-active;
+            }
+
+            &.has-error {
+                border-bottom-color: $color-error;
+            }
+
+            &::placeholder {
+                color: $color-inactive;
+            }
+
+        } // End input[type=text]
+
+        button {
+            display: block;
+            width: 100%;
+            height: 1.875rem;
+            padding: 0;
+            margin: 0;
+
+            color: $color-active;
+
+            outline: 0;
+            border: 2px solid $color-active;
+            background: white;
+
+            &[disabled] {
+                color: $color-inactive;
+                border-color: $color-inactive;
+            }
+
+        } // End button
+
+        .left {
+            width: 60%;
+        }
+
+        .right {
+            width: 25%;
+        }
+
+    } // End form
+
+} // End .search-screen
+
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    max-width: 100%;
+    height: 100%;
+
+    background: white;
+    transition: all 0.5s ease;
+    transition-delay: 1.5s;
+
+    &.hidden {
+        opacity: 0;
+    }
+
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 100px;
+        margin-left: -50px;
+        margin-top: -1px;
+    }
+
+} // End .loading-screen

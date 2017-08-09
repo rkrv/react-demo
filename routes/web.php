@@ -12,7 +12,6 @@
 */
 
 Route::get('api/person/{name}', function ($name = '') {
-    sleep(1);
     return [
         'val1' => 10,
         'val2' => 20

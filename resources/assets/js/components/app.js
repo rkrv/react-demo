@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import SearchScreen from './search-screen';
 import LoadingScreen from './loading-screen';
 import ErrorScreen from './error-screen';
@@ -10,7 +11,7 @@ class App extends Component {
         const { busy, error, hasResult } = this.props;
 
         return (
-            <section>
+            <section className="screen-container">
                 <SearchScreen visible={ ! hasResult } />
                 <LoadingScreen visible={ busy } />
                 <ResultScreen visible={ hasResult } />
